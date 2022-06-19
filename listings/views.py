@@ -16,7 +16,13 @@ def index(request):
     return render(request,'listings/listings.html',context)
 
 def listing(request,listing_id):
-    return render(request,'listings/listing.html')
+    listing = models.Listings.objects.get(pk=listing_id)
+
+    context = {
+        "listing": listing
+    }
+
+    return render(request,'listings/listing.html',context)
 
 def search(request):
     return render(request,'listings/search.html')
